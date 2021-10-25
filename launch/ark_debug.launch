@@ -1,0 +1,12 @@
+<launch>
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">
+        <arg name="port" value="11312" />
+    </include>
+
+    <node name="web_video_server" type="web_video_server" pkg="web_video_server" output="screen" respawn="true">
+        <param name="port" value="11313"></param>
+    </node>
+    <node name="uart" pkg="uart" type="uart" output="screen" respawn="false"></node>
+    <node name="ark_bridge" pkg="ark_bridge" type="ark_bridge_node" output="screen" respawn="true"></node>
+    <node name="ark_demo" pkg="ark_demo" type="ark_demo_node" output="screen" respawn="true"></node>
+</launch>
